@@ -21,7 +21,6 @@ public class PersonalInformation {
 
     @FindBy (xpath = "//*[@id=\"password\"]") //confirmPassword
     private WebElement confirmPasswordField;
-
     @FindBy(xpath = "/html/body/div/div/section/div/form/div[1]/button")
     private WebElement personalInformationNextButton;
 

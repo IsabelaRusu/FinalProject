@@ -21,9 +21,15 @@ public class ContactInformation {
 
     @FindBy(xpath = "//*[@id=\"postCode\"]")
     private WebElement PostCodeField;
+    @FindBy (xpath = "/html/body/div/div/section/div/form/div[2]/button[2]")
+    private WebElement contactInformationNextButton;
+
+    @FindBy(xpath = "/html/body/div/div/section/div/form/div[2]/h3")
+    private WebElement contactInformationHeader;
 
     //Constructorul
     public ContactInformation(WebDriver driver) {
+        this.contactInformationHeader = contactInformationHeader;
         PageFactory.initElements(driver,this);
     }
     public void writeInTheEmailField (String string) {EmailField.sendKeys(string);}
@@ -31,9 +37,10 @@ public class ContactInformation {
     public void writeInTheCountryField (String string) {CountryField.sendKeys(string);}
     public void writeInTheCityField (String string) {CityField.sendKeys(string);}
     public void writeInThePostCodeField (String string) {PostCodeField.sendKeys(string);}
+    public void clickOnContactInformationNextButton () {clickOnContactInformationNextButton();}
 
     public String getContactInformationHeaderText() {
-        return  "";
+        return contactInformationHeader.getText();
     }
 
 }
