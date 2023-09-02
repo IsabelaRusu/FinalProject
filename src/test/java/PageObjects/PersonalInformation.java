@@ -1,6 +1,6 @@
 package PageObjects;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.util.StringStack;
+import io.cucumber.core.runtime.RunnerSupplier;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,10 +19,12 @@ public class PersonalInformation {
     @FindBy (xpath = "//*[@id=\"password\"]") //Password
     private WebElement passWordField;
 
-    @FindBy (xpath = "//*[@id=\"password\"]") //confirmPassword
+    @FindBy (xpath = "//*[@id=\"cpassword\"]") //confirmPassword
     private WebElement confirmPasswordField;
     @FindBy(xpath = "/html/body/div/div/section/div/form/div[1]/button")
     private WebElement personalInformationNextButton;
+    @FindBy(xpath = "/html/body/div/div/section/div/form/div[1]/h3")
+    private WebElement personalInformationHeader;
 
     //Constructorul
     public PersonalInformation(WebDriver driver) {
@@ -37,8 +39,18 @@ public class PersonalInformation {
 
     public void writeInTheConfirmPasswordField (String string) {confirmPasswordField.sendKeys(string);}
 
-    public void clickOnPersonalInformationNextButton () { // TODO: Implement click button method
+    public void clickOnPersonalInformationNextButton () { personalInformationNextButton.click();
+    }
+    public String getPersonalInformationHeaderText() {
+        return personalInformationHeader.getText();
+    }
+    public void fillInPersonalInformationWithData(){
+        writeInTheFirstNameField("Ioana-Isabela");
+        writeInTheLastNameField("Rusu");
+        writeInTheUserNameField("Isabelarusu");
+        writeInThePasswordField("asdftjhytg1@");
+        writeInTheConfirmPasswordField("asdftjhytg1@");
+        clickOnPersonalInformationNextButton();
     }
 
-
- }
+}

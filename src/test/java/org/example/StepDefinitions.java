@@ -1,12 +1,14 @@
 package org.example;
 
 import PageObjects.*;
-import io.cucumber.java.bs.A;
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.*;
-import io.cucumber.java.en_scouse.An;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
@@ -31,6 +33,7 @@ public class StepDefinitions {
     // am creat un obiect cu denumirea confirmationOfRegistration in interiorul clasei ConfirmationOfRegistration
     private ConfirmationOfRegistrationPage confirmationOfRegistrationPage;
 
+
     //Constructor
     public StepDefinitions(){
         options.addArguments("--remote-allow-origins=*");
@@ -45,50 +48,53 @@ public class StepDefinitions {
         confirmationOfRegistrationPage = new ConfirmationOfRegistrationPage(driver);
     }
     //Main Page
-    @Given("I am on the SoftwareTestingCoursePage")
-    public void iAmOnTheMainPage (){
-        //driver desfasoara actiuni pe browser
-        driver.get("file:///D:/Rusu/SW%20tester/Testing-Env-master/Testing-Env-master/index.html");
-    }
+    //driver desfasoara actiuni pe browser
+    @Given("I am on the Main Page")
+        public void iAmOnTheMainPage() {
+            driver.get("file:///D:/Rusu/SW%20tester/Testing-Env-master/Testing-Env-master/index.html");
+        }
 
     @Given("I am on the Personal information page")
     public void iAmOnThePersonalPage () {
         //driver desfasoara actiuni pe browser
         driver.get("file:///D:/Rusu/SW%20tester/Testing-Env-master/Testing-Env-master/routes/enrollment.html");
     }
-
-        @Given("I am on the Contact information page")
-        public void iAmOnContactInformationPage () {
-            //driver desfasoara actiuni pe browser
-            driver.get("file:///D:/Rusu/SW%20tester/Testing-Env-master/Testing-Env-master/routes/enrollment.html");
-        }
-        @Given("I am on Course Options page")
-        public void iAmOnTheCourseOptionsPage () {
+    @Given("I am on Contact Information page")
+    public void iAmOnContactInformationPage() {
         driver.get("file:///D:/Rusu/SW%20tester/Testing-Env-master/Testing-Env-master/routes/enrollment.html");
-
-        }
-        @Given("I am on Payment Information page")
-        public void iAmOnThePaymentInformationPage () {
+        personalInformation.fillInPersonalInformationWithData();
+    }
+    @Given("I am on Course Options page")
+    public void iAmOnTheCourseOptionsPage () {
         driver.get("file:///D:/Rusu/SW%20tester/Testing-Env-master/Testing-Env-master/routes/enrollment.html");
-        }
+        personalInformation.fillInPersonalInformationWithData();
+        contactInformation.fillInContactInformationWithData();
+    }
 
-            /*
-         trebuie given si pentru courseOptions
-         ..
-         trebuie given si pentru confirmationOfRegistration
-        */
+    @Given("I am on the Payment Information page")
+    public void iAmOnThePaymentInformationPage() {
+        driver.get(("file:///D:/Rusu/SW%20tester/Testing-Env-master/Testing-Env-master/routes/enrollment.html"));
+        personalInformation.fillInPersonalInformationWithData();
+        contactInformation.fillInContactInformationWithData();
+        courseOptions.selectInCourseOptionsOneVariant();
+    }
+    @Given("I am on registration confirmation page")
+    public void iAmOnRegistrationConfirmationPage() {
+        driver.get("file:///D:/Rusu/SW%20tester/Testing-Env-master/Testing-Env-master/routes/enrollment.html");
+        personalInformation.fillInPersonalInformationWithData();
+        contactInformation.fillInContactInformationWithData();
+        courseOptions.selectInCourseOptionsOneVariant();
+        paymentInformation.introduceInPaymentInformationWithData();
+    }
 
-
-    @When("theFirstName {string} is written in the First name field")
-    public void writeTheFirstName(String string){
-            // TODO: Add the class
-            personalInformation.writeInTheFirstNameField(string);
-        }
-
-        @When("theEmail {string} is written in the Email field")
-        public void writeTheEmail(String string) {
-            contactInformation.writeInTheEmailField(string);
-        }
+    @When("{string} is written in the First name field")
+    public void isWrittenInTheFirstNameField(String string) {
+        personalInformation.writeInTheFirstNameField(string);
+    }
+    @When("{string} is written in the Email field")
+    public void isWrittenInTheEmailField(String string) {
+        contactInformation.writeInTheEmailField(string);
+    }
 
         @When("The Manual Tester Certificate is selected") //e ok asa?
             public void ButtonManualTester(){
@@ -98,7 +104,6 @@ public class StepDefinitions {
         public void ButtonAutomationTester() {
         courseOptions.clickOnButtonAutomationTester();
         }
-
         @When ("The Manual&Automation Tester Certificate is selected")
         public void ButtonAutomationAndManualTester(){
         courseOptions.clickOnButtonAutomationAndManualTester();
@@ -107,100 +112,155 @@ public class StepDefinitions {
         public void ButtonSecurityTester(){
         courseOptions.clickOnButtonSecurityTester();
         }
-        @When("The CardHolderName {string} is written in the card holder name field")
-        public void writeTheCardHolderName(){
-            paymentInformation.writeCardHolderName();
-        }
 
-    @And("theSecondName {string} is written in the Second name field")
-    public void writeTheLastName (String string) {
+    @When("{string} is written in the Card holder name field")
+    public void isWrittenInTheCardHolderNameField(String string) {
+        paymentInformation.writeCardHolderName(string);
+    }
+    @When("The e-mail {string} is written")
+    public void theEMailIsWritten(String string) {
+        mainPage.writeInTheEmailFieldForNewsLetter(string);
+    }
+
+    @When("I click to Homepage button")
+    public void iClickToHomepageButton() {
+        confirmationOfRegistrationPage.setClickOnReturnToHomePage();
+    }
+    @When("{string} is written in the e-mail field")
+    public void isWrittenInTheEMailField(String string) {
+        mainPage.writeInTheEmailFieldForNewsLetter(string);
+    }
+
+    @And("{string} is written in the Second name field")
+    public void isWrittenInTheSecondNameField(String string) {
         personalInformation.writeInTheLastNameField(string);
     }
-    @And("theUserName {string} is written in the Username field")
-    public void writeTheUsername (String string){
-            personalInformation.writeInTheUserNameField(string);
-        }
-    @And("thePasswordField {string} is written in the PasswordField field")
-    public void writeThePasswordField (String string){
-     personalInformation.writeInThePasswordField(string);
+    @And("{string} is written in the Username field")
+    public void isWrittenInTheUsernameField(String string) {
+        personalInformation.writeInTheUserNameField(string);
     }
-   @And("theConfirmPasswordField {string} is written in the Username field")
-   public void writeTheConfirmPassword (String string) {
-       personalInformation.writeInTheConfirmPasswordField(string);
-    }
-    @And("ThePersonalInformationNextButton is clicked")
-    public void clickOnPersonalInformationNextButton () {
-        personalInformation.clickOnPersonalInformationNextButton();
-            }
-    @And("ThePhoneField {string} is written in the Phone field")
-    public void writeThePhoneField (String string) {
-        contactInformation.writeInThePhoneField(string);
-    }
-    @And("TheCountryField {string} is written in the Country field")
-    public void writeTheCountryField (String string) {
-      contactInformation.writeInTheCountryField(string);
-    }
-    @And("TheCityField {string} is written in the City field")
-    public void writeTheCityField (String string) {
-        contactInformation.writeInTheCityField(string);
-                }
-    @And("ThePostCode {string} is written in the PostCode field ")
-            public void writeThePostCode (String string) {
-        contactInformation.writeInThePostCodeField(string);
-                }
-     @And("The Course Options Next Button is clicked")
-     public void clickOnCourseOptionsNextButton () {
-        courseOptions.clickOnCourseOptionsNextButton();
-     }
-     @And("TheCardNumber {string} is written in the Card Number field")
-     public void writeTheCradNumber (String string) {
-        paymentInformation.writeCardNumber(string);
-     }
-     @And("TheCVC {string} is written in the CVC field")
-     public void writeCVC (String string) {
-        paymentInformation.CVC(string);
-     }
-     @And("I click Dropdown Button Month")
-     public void clickOnDropDownMonthButton () {
-        paymentInformation.setClickOnDropDownMonth();
-    }
-    @And("I click Dropdown January Button")
-    public void clickOnDropDownJanuaryButton () {
-        paymentInformation.setClickOnJanuaryMonth();
-    }
-    @And("I click Dropdown Button Year")
-    public void clickOnDropDownYearButton () {
-        paymentInformation.setClickOnDropDownYear();
-    }
-    @And("I click Dropdown 2023 Button")
-    public void clickOnDropDown2023Button () {
-        paymentInformation.setClickOn2023Year();
-    }
-    @And("clickOnPaymentInformationNextButton")
-    public void clickOnPaymentInformationButton () {
-        paymentInformation.setClickOnNextButtonPaymentInformation();
+    @And("{string} is written in the PasswordField field")
+    public void isWrittenInThePasswordFieldField(String string) {
+        personalInformation.writeInThePasswordField(string);
     }
 
-    @Then("The Contact information page opens")
-  public void TheContactInformationPageOpens () {
-                Assertions.assertEquals("Contact information",contactInformation.getContactInformationHeaderText());
-            }
+    @And("{string} is written in the ConfirmPasswordField field")
+    public void isWrittenInTheConfirmPasswordFieldField(String string) {
+        personalInformation.writeInTheConfirmPasswordField(string);
+    }
+
+    @And("ThePersonalInformationNextButton is clicked")
+    public void thepersonalinformationnextbuttonIsClicked() {
+        personalInformation.clickOnPersonalInformationNextButton();
+    }
+    @And("{string} is written in the Phone filed")
+    public void isWrittenInThePhoneFiled(String string) {
+        contactInformation.writeInThePhoneField(string);
+    }
+    @And("{string} is written in the Country field")
+    public void isWrittenInTheCountryField(String string) {
+        contactInformation.writeInTheCountryField(string);
+    }
+    @And("{string} is written in the City filed")
+    public void isWrittenInTheCityFiled(String string) {
+        contactInformation.writeInTheCityField(string);
+    }
+    @And("{string} is written in the Post Code filed")
+    public void isWrittenInThePostCodeFiled(String string) {
+        contactInformation.writeInThePostCodeField(string);
+    }
+    @And("TheContactInformationNextButton is clicked")
+    public void thecontactinformationnextbuttonIsClicked() {
+        contactInformation.clickOnContactInformationNextButton();
+    }
+    @And("TheCourseOptionsNextButton is clicked")
+    public void thecourseoptionsnextbuttonIsClicked() {
+        courseOptions.clickOnCourseOptionsNextButton();
+    }
+    @And("{string} is written in Card number field")
+    public void isWrittenInCardNumberField(String string) {
+     paymentInformation.writeCardNumber(string);
+    }
+    @And("{string} in CVC number field")
+    public void inCVCNumberField(String string) {
+        paymentInformation.CVC(string);
+    }
+    @And("I click Month dropdown button")
+    public void iClickMonthDropdownButton() {
+        paymentInformation.setClickOnDropDownMonth();
+    }
+    @And("I click on January month from dropdown list")
+    public void iClickOnJanuaryMonthFromDropdownList() {
+        paymentInformation.setClickOnJanuaryMonth();
+    }
+    @And("I click on Year dropdown button")
+    public void iClickOnYearDropdownButton() {
+        paymentInformation.setClickOnDropDownYear();
+    }
+    @And("I click on 2023 year from dropdown list")
+    public void iClickOnYearFromDropdownList() {
+        paymentInformation.setClickOn2023Year();
+    }
+    @And("I click on Next button on Payment Information page")
+    public void iClickOnNextButtonOnPaymentInformationPage() {
+        paymentInformation.setClickOnPaymentInformationNextButton();
+    }
+    @And("The Submit button is clicked")
+    public void theSubmitButtonIsClicked() {
+        mainPage.clickOnSubmitButtonForNewsLetter();
+    }
+
+    @Then("the Contact information page opens")
+    public void theContactInformationPageOpens() {
+        Assertions.assertEquals("Contact information",contactInformation.getContactInformationHeaderText());
+    }
 
     @Then("I remain on Personal information page")
     public void iAmNotAllowedToOpenTheContactInformationPage() {
-        Assertions.assertEquals("Personal information", personalInformation);
-
+        Assertions.assertEquals("Personal information", personalInformation.getPersonalInformationHeaderText());
     }
 
-   // @Then("The Payment information opens ")
-    //public void ThePaymentInformationPageOpens() {
-     //   Assertions.assertEquals("Paymant information",paymantinformation);
-    //}
-
-
-    @Then("the scenario passes")
-    public void theScenarioPasses() {
+    @Then("The Course options page opens")
+    public void theCourseOptionsPageOpens() {
+        Assertions.assertEquals("Course options", courseOptions.getCourseOptionsHeader());
+    }
+    @Then("the Payment Information page opens")
+    public void thePaymentInformationPageOpens() {
+        Assertions.assertEquals("Payment information",paymentInformation.getHeaderText());
+    }
+    @Then("I remain on Course Options page")
+    public void iRemainOnCourseOptionsPage() {
+        Assertions.assertTrue(driver.findElement(By.xpath("/html/body/div/div/section/div/form/div[3]/h3")).isDisplayed());
 
     }
+    @Then("the success message for registration appears")
+    public void theMessageForRegistrationAppears() {
+        Assertions.assertTrue(driver.findElement(By.xpath("/html/body/div/div/section/div/form/div[5]/h3")).isDisplayed());
+    }
+    @Then("I remain on Payment Information page")
+    public void iRemainOnPaymentInformationPage() {
+        Assertions.assertTrue(driver.findElement(By.xpath("/html/body/div/div/section/div/form/div[4]/h3")).isDisplayed());
+    }
+    @Then("The Homepage opens")
+    public void theHomepageOpens() {
+        Assertions.assertEquals("Software Testing Course", driver.getTitle());
+    }
+    @Then("The newsletter confirmation pop-up appears")
+    public void theNewsletterConfirmationPopUpAppears() {
+        driver.switchTo().alert().accept();
+    }
 
+    @Then("The error message appears")
+    public void theErrorMessageAppears() {
+        Assertions.assertTrue(driver.getPageSource().contains("error"));
+    }
+
+    @After
+    public void cleanUp(Scenario scenario) {
+        if (scenario.isFailed()) {
+            final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/jpg", "");
+        }
+        driver.quit();
+    }
 }

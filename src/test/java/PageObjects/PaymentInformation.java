@@ -23,13 +23,16 @@ public class PaymentInformation {
     @FindBy(xpath = "//*[@id=\"year\"]/option[4]")
     private WebElement clickOn2023Year;
     @FindBy(xpath = "/html/body/div/div/section/div/form/div[4]/div[4]/button[2]")
-    private WebElement clickOnNextButtonPaymentInformation;
+    private WebElement clickOnPaymentInformationNextButton;
+
+    @FindBy(xpath = "/html/body/div/div/section/div/form/div[4]/h3")
+    private WebElement paymentHeader;
 
     //Constructorul
     public PaymentInformation(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
-    public void writeCardHolderName() {CardHolderName.sendKeys();}
+    public void writeCardHolderName(String string) {CardHolderName.sendKeys(string);}
     public void writeCardNumber(String string) {CardNumber.sendKeys(string);
     }
     public void CVC(String string) {
@@ -39,19 +42,28 @@ public class PaymentInformation {
     public void setClickOnJanuaryMonth(){
         clickOnJanuaryMonth.click();
     }
-    public void selectMonthWithXPath(WebDriver driver,String month){
-        WebElement dropdown = driver.findElement(By.xpath("//*[@id=\"month\"]"));
-        Select select = new Select(dropdown);
-        select.selectByVisibleText(month);
-    }
+
     public void setClickOnDropDownYear() {clickOnDropDownYear.click();}
     public void setClickOn2023Year() {clickOn2023Year.click();}
-    public void selectYearWithXpath (WebDriver driver, String year) {
-        WebElement dropdown = driver.findElement(By.xpath("//*[@id=\"year\"]"));
-        Select select = new Select(dropdown);
-        select.selectByVisibleText(year);
+    public void setClickOnPaymentInformationNextButton(){
+        clickOnPaymentInformationNextButton.click();
+    }
+    //e ok sa pun cu setClick..sau fara set in fata?
+    public void introduceInPaymentInformationWithData(){
+        writeCardHolderName("Rusu Ioana Isabela");
+        writeCardNumber("1234 5678 9101");
+        CVC("123");
+        setClickOnDropDownMonth();
+        setClickOnJanuaryMonth();
+        setClickOnDropDownYear();
+        setClickOn2023Year();
+        setClickOnPaymentInformationNextButton();
+
     }
 
-    public void setClickOnNextButtonPaymentInformation() {clickOnNextButtonPaymentInformation.click();}
+    public String getHeaderText() {
+        return paymentHeader.getText();
+    }
+
 
 }

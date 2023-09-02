@@ -21,33 +21,36 @@ public class CourseOptions {
     @FindBy (xpath = "/html/body/div/div/section/div/form/div[3]/button[2]")
     private WebElement CourseOptionsNextButton;
 
+    @FindBy(xpath = "/html/body/div/div/section/div/form/div[3]/h3")
+    private WebElement courseOptionsHeader;
+
     //Constructorul
     public CourseOptions(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
     //e ok cum e mai jos?
     public void clickOnButtonManualTester() {
-        WebElement ButtonManualTestar;
-        ButtonManualTestar.click();
+        ManualTtesterCertificate.click();
     }
   public void clickOnButtonAutomationTester () {
-      WebElement ButtonAutomationTester;
-      ButtonAutomationTester.click();}
+      AutomationTesterCertificate.click();
+    }
     public void clickOnButtonAutomationAndManualTester(){
-        WebElement ButtonAutomationAndManualTester;
-        ButtonAutomationAndManualTester.click();}
+        AutomationAndManualTesterCertificate.click();}
     public void clickOnButtonSecurityTester(){
-        WebElement ButonSecurityTester;
-        ButonSecurityTester.click();
+        SecurityTesterCertificate.click();
     }
     public void clickOnCourseOptionsNextButton(){
-        WebElement CourseOptionsNextButton;
+        //WebElement CourseOptionsNextButton = null;
         CourseOptionsNextButton.click();
     }
+    public void selectInCourseOptionsOneVariant() {
+        clickOnButtonManualTester();
+        clickOnCourseOptionsNextButton();
+    }
 
-
-
-
-
+    public String getCourseOptionsHeader() {
+        return courseOptionsHeader.getText();
+    }
 
 }

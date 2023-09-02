@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="320e6fd2-ce31-4269-8bfc-bdaa3f1ee9cf" name="Changes" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/src/test/java/PageObjects/ConfirmationOfRegistrationPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/PageObjects/CourseOptions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/PageObjects/PaymentInformation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/cucumber.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chromedriver.exe" beforeDir="false" afterPath="$PROJECT_DIR$/chromedriver.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/PageObjects/ConfirmationOfRegistrationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/ConfirmationOfRegistrationPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/PageObjects/ContactInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/ContactInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/PageObjects/CourseOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/CourseOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/PageObjects/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/MainPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/PageObjects/PaymentInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/PaymentInformation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/PageObjects/PersonalInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/PersonalInformation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/StepDefinitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/StepDefinitions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/org/example/example.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/org/example/example.feature" afterDir="false" />
@@ -55,8 +58,119 @@
       <recent name="org.example" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Rusu\SW tester\Cursuri\11.08.2023_Proiectul final\FinalProject" />
       <recent name="D:\Rusu\SW tester\Cursuri\11.08.2023\Proiect_Rusu_Ioana_Isabela\FinalProject" />
     </key>
+  </component>
+  <component name="RunManager" selected="Cucumber Java.Scenario: TC013 Check Return to homepage button">
+    <configuration name="Feature: example" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/org/example/example.feature" />
+      <option name="GLUE" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="FinalProject" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
+      <option name="SUGGESTED_NAME" value="Feature: example" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: TC004 Negative: Write a different Confirmation Password" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/org/example/example.feature" />
+      <option name="GLUE" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="FinalProject" />
+      <option name="NAME_FILTER" value="^TC004 Negative\: Write a different Confirmation Password$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^TC004 Negative\: Write a different Confirmation Password$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: TC004 Negative: Write a different Confirmation Password" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: TC012 Negative: Write valid information in Payment Information page without CVC" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/org/example/example.feature" />
+      <option name="GLUE" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="FinalProject" />
+      <option name="NAME_FILTER" value="^TC012 Negative\: Write valid information in Payment Information page without CVC$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^TC012 Negative\: Write valid information in Payment Information page without CVC$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: TC012 Negative: Write valid information in Payment Information page without CVC" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: TC013 Check Return to homepage button" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/org/example/example.feature" />
+      <option name="GLUE" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="FinalProject" />
+      <option name="NAME_FILTER" value="^TC013 Check Return to homepage button$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^TC013 Check Return to homepage button$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: TC013 Check Return to homepage button" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: TC013 Valid e-mail for Newsletter" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/org/example/example.feature" />
+      <option name="GLUE" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="FinalProject" />
+      <option name="NAME_FILTER" value="^TC013 Valid e\-mail for Newsletter$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^TC013 Valid e\-mail for Newsletter$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: TC013 Valid e-mail for Newsletter" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Cucumber Java.Scenario: TC013 Check Return to homepage button" />
+        <item itemvalue="Cucumber Java.Feature: example" />
+        <item itemvalue="Cucumber Java.Scenario: TC004 Negative: Write a different Confirmation Password" />
+        <item itemvalue="Cucumber Java.Scenario: TC012 Negative: Write valid information in Payment Information page without CVC" />
+        <item itemvalue="Cucumber Java.Scenario: TC013 Valid e-mail for Newsletter" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -74,11 +188,23 @@
       <option name="project" value="LOCAL" />
       <updated>1692376633380</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Initial commit">
+      <created>1692971482813</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1692971482813</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
     <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/FinalProject$Scenario__TC001_Write_a_valid_First_Name___25_characters.ic" NAME="Scenario: TC001 Write a valid First Name - 25 characters Coverage Results" MODIFIED="1693313558687" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>io.cucumber.core.cli.*</FILTER>
+    </SUITE>
   </component>
 </project>

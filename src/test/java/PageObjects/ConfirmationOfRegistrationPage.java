@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class ConfirmationOfRegistrationPage {
-    @FindBy(xpath ="/html/body/div/div/section/div/form/div[5]/h3")
+    @FindBy(xpath ="/html/body/div/div/section/div/form/div[5]/a")
     private WebElement clickOnReturnToHomePage;
 
     //constructorul
